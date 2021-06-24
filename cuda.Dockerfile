@@ -3,7 +3,7 @@ FROM docker.repository.cloudera.com/cdsw/engine:13
 RUN rm /etc/apt/sources.list.d/cloudera.list
 RUN rm /etc/apt/sources.list.d/yarn.list
 
-RUN sudo add-apt-repository ppa:deadsnakes/ppa
+RUN add-apt-repository ppa:deadsnakes/ppa
 
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -39,7 +39,7 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
 ENV CUDNN_VERSION 8.2.1.32
 LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
 
-RUN sudo apt install python3.9
+RUN apt install python3.9
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
             libcudnn8=$CUDNN_VERSION-1+cuda11.3 && \
